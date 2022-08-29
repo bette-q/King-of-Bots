@@ -1,34 +1,18 @@
 <!--html-->
 <template>
-  <div>
-    <div>Bot Name: {{ botName }}</div>
-    <div>Bot Elo: {{ botElo }}</div>
-  </div>
+  <NavBar />
   <router-view></router-view>
 </template>
 
 <!--js-->
 <script>
-import $ from "jquery";
-import { ref } from "vue";
+//access to jquery library
+import NavBar from "./components/NavBar.vue";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap";
 export default {
-  name: "App",
-  setup: () => {
-    let botName = ref("");
-    let botElo = ref("");
-
-    $.ajax({
-      url: "http://localhost:3000/pk/getbotinfo/",
-      type: "get",
-      success: (resp) => {
-        botName.value = resp.name;
-        botElo.value = resp.age;
-      },
-    });
-    return {
-      botName,
-      botElo,
-    };
+  components: {
+    NavBar,
   },
 };
 </script>
@@ -36,7 +20,8 @@ export default {
 <!-- css -->
 <style>
 body {
-  background-image: url("@/assets/nini.jpeg");
+  /* @ -> default src folder*/
+  background-image: url("@/assets/images/nini.jpeg");
   background-size: cover;
 }
 </style>
