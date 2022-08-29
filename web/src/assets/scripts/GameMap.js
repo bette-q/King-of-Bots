@@ -39,6 +39,7 @@ export class GameMap extends GameObject {
     }
     return false;
   }
+
   createObstacles() {
     //mark obstacle location
     const walls = [];
@@ -73,7 +74,7 @@ export class GameMap extends GameObject {
       walls[x][y] = walls[y][x] = true;
       i--;
     }
-
+    //copy
     const copyWall = JSON.parse(JSON.stringify(walls));
     //valid path between 2 snakes
     if (!this.checkConnectivity(copyWall, this.rows - 2, 1, 1, this.cols - 2)) {
@@ -87,7 +88,6 @@ export class GameMap extends GameObject {
         }
       }
     }
-
     return true;
   }
 
